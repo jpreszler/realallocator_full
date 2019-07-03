@@ -1,0 +1,76 @@
+<html>
+<head>
+  <Title>RealAllocator: Custom Backtest</title>
+<link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <body>
+     <div class="container"><br>
+         <center>
+           <h1>RealAllocator Custom Backtest</h1>
+         </center>
+       </div>
+<p>
+       <div class="row">
+         <div class="col-md-6">
+           <h3> Portfolio Allocation:</h3>
+           <table class="table table-striped" id="owned_stock_table">
+             <thead>
+               <tr>
+                 <th>Porfolio</th>
+                 <th>Equity Allocation</th>
+                 <th>Bond Allocation</th>
+                 <th>Direct Real Estate Allocation</th>
+                 <th>Est. Sharpe Ratio</th>
+               </tr>
+             </thead>
+             <tbody>
+               {% for key,port_data in portfolios.iterrows() %}
+               <tr>
+                 <td>{{port_data['name']}}</td>
+                 <td>{{ port_data['stock weight']*100 }}</td>
+                 <td>{{ port_data['bond weight']*100 }}</td>
+                 <td>{{ port_data['real estate weight']*100}}</td>
+                 <td>{{ port_data['Sharpe']}}</td>
+               </tr>
+               {% endfor %}
+             </tbody>
+           </table>
+         </div>
+         <div class="col-md-6">
+           <h3>Custom Backtest:</h3>
+           <table class="table table-striped" id="owned_stock_table">
+             <thead>
+               <tr>
+                 <th>Length</th>
+                 <th>Mean Quarterly Return Difference</th>
+                 <th>Difference in Overall Return</th>
+                 <th>Risk Difference</th>
+                 <th>Number Quarters Optimal Ahead</th>
+               </tr>
+             </thead>
+             <tbody>
+               {% for key, result in results.iterrows() %}
+               <tr>
+                 <td>{{ result['Length'] }}</td>
+                 <td>{{ result['mean_error'] }}</td>
+                 <td> {{ result['sum']}}</td>
+                 <td>{{ result['risk'] }}</td>
+                 <td>{{ result['opt_up'] }}</td>
+               </tr>
+               {% endfor %}
+             </tbody>
+           </table>
+         </div>
+
+       </div>
+<div class='row'>
+     <img src="{{url_for('static', filename=backtest)}}", height="350px"/><br>
+   </div>
+   <p><br>
+             <div class="row">
+                   </div>
+
+   </body>
+</html>

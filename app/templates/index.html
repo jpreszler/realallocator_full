@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <Title>RealAllocator</title>
+<link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <body>
+     <div class="container"><br>
+         <center>
+           <h2>RealAllocator: Portfolio Optimizer for Direct Real Estate</h2>
+         </center>
+       </div>
+
+<p>
+  This form will use your current portfolio with equities and risk tolerance to provide a
+  portfolio that includes direct real estate investment. The resulting portfolio will provide optimal
+  performance based on your risk tolerance using historic market conditions, but may not perform optimally
+  under all market conditions, past or future.
+  <p>
+      <form action = "/optimized" method = post>
+         <fieldset>
+            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+               <label for='equityAlloc'>Equity Allocation (percent):</label>
+               <input type="number" id='equityAlloc' name='equityAlloc' min=0 max=100> <br>
+<!--               <label for='bondAlloc'>Bond Allocation (percent):</label>
+               <input type="number" id='bondAlloc' name='bondAlloc' min=0 max=100> <br>
+-->
+               <label for='riskTol'>Risk Tolerance: </label>
+               <select id='riskTol' name='riskTol'>
+    <option value="">--Please choose a risk tolerance--</option>
+    <option value="1">very low risk</option>
+    <option value="2">low risk</option>
+    <option value="3">balanced risk</option>
+    <option value="4">moderate risk</option>
+    <option value="5">high risk</option>
+</select><br>
+<!--<label for='market'>Market Expectations: </label>
+<select id='market' name='market'>
+<option value="">--Please choose a risk tolerance--</option>
+<option value="0">High Growth (Equity returns above 10%)</option>
+<option value="1">Low to Moderate Growth (Equity returns of -3% to 8%)</option>
+<option value="2">Contraction (Equity returns below -3%)</option>
+</select>
+
+<!--               <br>
+              From (yyyyQn): {{ form.startQuarter }} Until (yyyyQn): {{ form.endQuarter }}
+            -->
+               <br>
+               <br>
+               {{ form.submit }}
+            </div>
+
+         </fieldset>
+      </form>
+   </body>
+</html>
